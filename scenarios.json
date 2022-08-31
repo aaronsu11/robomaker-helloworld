@@ -19,10 +19,14 @@
 	},
 	"simulations": [{
 		"scenarios": [
-			"Scenario1",
-	        "Scenario2"
+			"Scenario1"
 	      ],
 		"params": {
+			"compute": { 
+				"computeType": "GPU_AND_CPU",
+				"gpuUnitLimit": 1,
+				"simulationUnitLimit": 15
+			 },
 			"failureBehavior": "Fail",
 			"iamRole": "arn:aws:iam::825070765801:role/cicd-stack-RoboMakerSimulationRole-1V40QOBUY1INQ",
 			"maxJobDurationInSeconds": 300,
