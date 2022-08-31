@@ -27,7 +27,7 @@
 			"iamRole": "arn:aws:iam::825070765801:role/cicd-stack-RoboMakerSimulationRole-1V40QOBUY1INQ",
 			"maxJobDurationInSeconds": 300,
 			"outputLocation": {
-				"s3Bucket": "arn:aws:s3:::workshop-artifact",
+				"s3Bucket": "workshop-artifact",
 				"s3Prefix": "logs"
 			},
 			"robotApplications": [{
