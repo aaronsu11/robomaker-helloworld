@@ -26,10 +26,6 @@
 			"failureBehavior": "Fail",
 			"iamRole": "arn:aws:iam::825070765801:role/cicd-stack-RoboMakerSimulationRole-1V40QOBUY1INQ",
 			"maxJobDurationInSeconds": 300,
-			"outputLocation": {
-				"s3Bucket": "workshop-artifact",
-				"s3Prefix": "logs"
-			},
 			"robotApplications": [{
 				"application": "arn:aws:robomaker:ap-southeast-1:825070765801:robot-application/RobotApplication/1661840626573",
 				"applicationVersion": "$LATEST",
