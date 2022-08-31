@@ -19,7 +19,8 @@
 	},
 	"simulations": [{
 		"scenarios": [
-			"Scenario1"
+			"Scenario1",
+			"Scenario2"
 	      ],
 		"params": {
 			"compute": { 
