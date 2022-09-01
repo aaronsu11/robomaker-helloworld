@@ -37,20 +37,20 @@
 				"simulationUnitLimit": 15
 			},
 			"failureBehavior": "Fail",
-			"iamRole": "arn:aws:iam::825070765801:role/cicd-stack-RoboMakerSimulationRole-1V40QOBUY1INQ",
+			"iamRole": "<RoboMakerSimulationRole>",
 			"maxJobDurationInSeconds": 300,
 			"robotApplications": [{
-				"application": "arn:aws:robomaker:ap-southeast-1:825070765801:robot-application/RobotApplication/1661840626573",
+				"application": "<RobotApplication>",
 				"applicationVersion": "$LATEST",
 				"launchConfig": {
 					"streamUI": false,
 					"command": [
-						"roscore"
+						"roscore", "&", "rosrun", "hello_world_robot", "rotate.py"
 					]
 				}
 			}],
 			"simulationApplications": [{
-				"application": "arn:aws:robomaker:ap-southeast-1:825070765801:simulation-application/SimulationApplication/1661840626774",
+				"application": "<SimulationApplication>",
 				"applicationVersion": "$LATEST",
 				"launchConfig": {
 					"streamUI": false,
@@ -61,8 +61,8 @@
 			}],
 			"vpcConfig": {
 				"assignPublicIp": true,
-				"subnets": [ "subnet-0ac08dbe63ea03eba", "subnet-085729de1ab4b01c9" ],
-            	"securityGroups": [ "sg-06fa66c975c1852bc" ]
+				"subnets": [ "<robomakerws-PublicSubnet1>", "<robomakerws-PublicSubnet2>" ],
+                "securityGroups": [ "<robomakerws-DefaultSG>" ]
 			}
 		}
 	}]
