@@ -1,0 +1,64 @@
+version: 0.2
+
+env:
+  variables:
+      robotapp: "rws-robotapp"
+      account: "825070765801"
+      region: "ap-southeast-1"
+  #parameter-store:
+     # key: "value"
+     # key: "value"
+  #secrets-manager:
+     # key: secret-id:json-key:version-stage:version-id
+     # key: secret-id:json-key:version-stage:version-id
+  #exported-variables:
+     # - variable
+     # - variable
+  #git-credential-helper: yes
+#batch:
+  #fast-fail: true
+  #build-list:
+  #build-matrix:
+  #build-graph:
+phases:
+  #install:
+    #If you use the Ubuntu standard image 2.0 or later, you must specify runtime-versions.
+    #If you specify runtime-versions and use an image other than Ubuntu standard image 2.0, the build fails.
+    #runtime-versions:
+      # name: version
+      # name: version
+    #commands:
+      # - command
+      # - command
+  #pre_build:
+    #commands:
+      # - command
+      # - command
+  build:
+    commands:
+      - DOCKER_BUILDKIT=1 docker build . --build-arg ROS_DISTRO=melodic --build-arg LOCAL_WS_DIR=./robot_ws --build-arg APP_NAME=helloworld-robot-app -t $robotapp
+  post_build:
+    commands:
+      - export ecruri=$account.dkr.ecr.$region.amazonaws.com
+      - aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $ecruri
+      - docker tag $robotapp $ecruri/$robotapp:latest
+      - docker push $ecruri/$robotapp
+      - aws ecr list-images --repository-name $robotapp 
+#reports:
+  #report-name-or-arn:
+    #files:
+      # - location
+      # - location
+    #base-directory: location
+    #discard-paths: yes
+    #file-format: JunitXml | CucumberJson
+artifacts:
+  files:
+     - scenarios.json
+    # - location
+  #name: $(date +%Y-%m-%d)
+  #discard-paths: yes
+  #base-directory: location
+#cache:
+  #paths:
+    # - paths
