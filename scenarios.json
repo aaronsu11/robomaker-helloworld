@@ -45,7 +45,7 @@
 				"launchConfig": {
 					"streamUI": false,
 					"command": [
-						"roscore", "&", "rosrun", "hello_world_robot", "rotate.py"
+						"roscore"
 					]
 				}
 			}],
